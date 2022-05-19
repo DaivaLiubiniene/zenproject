@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +16,9 @@ public class Review {
     private Long id;
 
     private Integer score;
+
+    @ManyToOne
+    private Nanny nanny;
 
     public Long getId() {
         return id;
