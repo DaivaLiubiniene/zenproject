@@ -3,8 +3,19 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: admin
-
   jpa:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri:
+          jwk-set-uri:
+          jws-algorithm:
+          public-key-location:
+
+cors:
+  allowed-urls:
+    - http://localhost:3000

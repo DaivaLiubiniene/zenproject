@@ -2,6 +2,8 @@ package uk.co.zenitech.core.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +27,7 @@ public class NannyController {
         this.nannyService = nannyService;
     }
 
+    @PreAuthorize(value = "hasRole('ADMIN') or hasAuthority('UID_' + #id)")
     @GetMapping("/{id}")
     public ResponseEntity<Nanny> getNannyById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(nannyService.getNannyById(id));
